@@ -1,1 +1,37 @@
+1. Falling Glass
 
+Given: n floors, m glass sheets
+Find: What's the minimum amount of trials?
+
+(a) Optimal substructure/recurrence that would lead to a recursive solution:
+    
+    There are two possibilities at each trial: Falling glass can either break or not break
+    If falling glass breaks: after falling from the ith floor, then we check i - 1 floors
+                             (since we know if we go higher than ith floor, glass will break)
+    If falling glass doesn't break: after falling from the ith floor, then we check floors higher than i
+                                    reducing the problem to n - i floors and m sheets
+
+(b) Recurrence tree for given (floors = 4, sheets = 2):
+           
+              (4, 2)
+              /    \
+             /      \
+           (3, 2)    (3, 1)
+            /   \       /   \
+           /     \     /     \
+     (2, 2)    (2,1) (2,1)  (2, 0)
+      /  \      /\     /  \
+     /    \ (1,1)(1,0)(1,1)(1,0)
+    /      \
+(1, 2)   (1,1)
+   
+(d) 4 x 2 distinct subproblems that you end up with given 4 floors and 2 sheets = 8
+(e) n x m distinct subproblems that you end up with given n floors and m sheets = nm
+(f) Memoize GlassFallingRecur: Create a 2D array where you can save results after each recursive call.
+                               Before beginning each recursive call, look up 2D array.
+                               2D array [Floors][Sheets]
+                               ...
+                               if array >= 0 return array //check
+                               ...
+                               array = minimum + 1
+                               return minimum //amount of trials
