@@ -35,3 +35,5 @@ Find: What's the minimum amount of trials?
                                ...
                                array = minimum + 1
                                return minimum //amount of trials
+
+2. Rod Cutting
