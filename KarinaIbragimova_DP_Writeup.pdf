@@ -1,8 +1,5 @@
 1. Falling Glass
 
-Given: n floors, m glass sheets
-Find: What's the minimum amount of trials?
-
 (a) Optimal substructure/recurrence that would lead to a recursive solution:
     
     There are two possibilities at each trial: Falling glass can either break or not break
@@ -37,3 +34,22 @@ Find: What's the minimum amount of trials?
                                return minimum //amount of trials
 
 2. Rod Cutting
+
+(a) Recursion tree for a rod of length 5: 
+                  5
+       /      /      \      \    \
+       4      3      2      1    0
+  |  | | |   | | |   | |    | 
+ 3  2  1 0   2 1 0   1 0    0
+ ||| |\ \   |\ \     \
+ 210 1 0 0  1 0 0     0
+ /\\  \      \
+ 1 00  0      0
+ |
+ 0
+ 
+ (b) Counterexample: Rod Length = 1, 2, 3, 4 
+                         Prices: 1, 18, 30, 32
+                         P/l   : 1, 9, 10, 8
+The greedy approach would be to start with cutting rod to length 3 which is price of 30. Leaves us with length 1, price of 1. 
+Total price is 31. However, we get more value using DP: If we cut the rod with length 2 = price of 18 + 18 = price of 36. 
