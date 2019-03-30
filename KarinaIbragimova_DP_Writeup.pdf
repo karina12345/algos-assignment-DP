@@ -22,15 +22,9 @@
                   
 (d) 4 x 2 distinct subproblems that you end up with given 4 floors and 2 sheets = 8
 (e) n x m distinct subproblems that you end up with given n floors and m sheets = nm
-(f) Memoize GlassFallingRecur: Create a 2D array where you can save results after each recursive call.
+(f) Memoize GlassFallingRecur: Create a 2D array for floors, sheets, where you can save results after each recursive call.
                                Before beginning each recursive call, look up 2D array.
-                               2D array [Floors][Sheets]
-                               ...
-                               if array >= 0 return array //check
-                               ...
-                               array = minimum + 1
-                               return minimum //amount of trials
-
+                              
 2. Rod Cutting
 
 (a) Recursion tree for a rod of length 5: 
