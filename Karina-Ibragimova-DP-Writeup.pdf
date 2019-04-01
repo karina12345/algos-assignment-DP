@@ -8,11 +8,11 @@
     If falling glass doesn't break: after falling from the ith floor, then we check floors higher than i
                                     reducing the problem to n - i floors and m sheets
 
-(b) Recurrence tree for given (floors = 4, sheets = 2):
+(b) Recurrence tree for given (floors = 4, sheets = 2):  
 
                                               (4, 2)
                            /                 /         \                     \
-                     (1, 2)          (2, 2)            (3, 2)              (4, 2)
+                      1st fl          2nd fl         3rd fl               4th fl
                     / \              / \              / \                   / \
               (0, 1)  (3, 2)    (1, 1)  (2, 2)    (2, 1) (1, 2)       (3, 1)   (0, 2)
                      /   \              / \          / \              / \
@@ -22,10 +22,10 @@
                   
 (d) 4 x 2 distinct subproblems that you end up with given 4 floors and 2 sheets = 8
 (e) n x m distinct subproblems that you end up with given n floors and m sheets = nm
-(f) Memoize GlassFallingRecur: Create a 2D array for floors, sheets, where you can save results after each recursive call.
-                               Before beginning each recursive call, look up 2D array. The base case would stay the same,
+(f) Memoize GlassFallingRecur: Create an array for floors, sheets, where you can save results after each recursive call.
+                               Before beginning each recursive call, look up array. The base cases would stay the same,
                                and you would check if [floors][sheets] is in memory, return it, otherwise, make the recursive call,
-                               save it in memory, return [floors][sheets].
+                               save it in memory, return minimum trials of [floors][sheets].
                               
 2. Rod Cutting
 
