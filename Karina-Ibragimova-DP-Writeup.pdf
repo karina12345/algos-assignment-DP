@@ -3,24 +3,32 @@
 (a) Optimal substructure/recurrence that would lead to a recursive solution:
     
     There are two possibilities at each trial: Falling glass can either break or not break
-    If falling glass breaks: after falling from the ith floor, then we check i - 1 floors
+    If falling glass breaks: after falling from the ith floor, broken glass gets swept away,
+                             then we check i - 1 floors using m - 1 sheets
                              (since we know if we go higher than ith floor, glass will break)
     If falling glass doesn't break: after falling from the ith floor, then we check floors higher than i
-                                    reducing the problem to n - i floors and m sheets
+                                    reducing the problem to n - i floors and using m sheets
 
 (b) Recurrence tree for given (floors = 4, sheets = 2):  
 
-                                              (4, 2)
-                           /                 /         \                     \
-                      1st fl          2nd fl         3rd fl               4th fl
-                    / \              / \              / \                   / \
-              (0, 1)  (3, 2)    (1, 1)  (2, 2)    (2, 1) (1, 2)       (3, 1)   (0, 2)
-                     /   \              / \          / \              / \
-               (0, 1)  (2, 2)      (0, 1) (1, 2) (1, 0) (1, 1)   (2, 0)  (2, 1)
-                       / \                                                 / \
-                  (0, 1)  (1, 2)                                      (1, 0)  (1, 1)
-                  
-(d) 4 x 2 distinct subproblems that you end up with given 4 floors and 2 sheets = 8
+                                          (4,2)
+                ____________________________|__________________________________
+                |                       |                 |                   |
+                n=1                     n=2               n=3                 n=4
+             /     |                   /   |               /\                  /\
+          (0,1)    (3,2)          (1,1)    (2,2)       (2,1) (1,2)         (3,1) (0,2)
+                  ___|_______             ___|_______
+                 |   |       |            |          | 
+                n=1  n=2     n=3          n=1        n=2
+           /  |      |  \      |   \       |   \      |  \
+       (0,1)  (2,2) (1,1)(1,2) (2,1)(0,2) (0,1)(1,2) (1,1)(0,2)
+            ___|___
+           |       |
+           n=1    n=2
+          / |      | \
+      (0,1)(1,2) (1,1)(0,2)
+                
+(d) 8 distinct subproblems that you end up with given 4 floors and 2 sheets
 (e) n x m distinct subproblems that you end up with given n floors and m sheets = nm
 (f) Memoize GlassFallingRecur: Create an array for floors, sheets, where you can save results after each recursive call.
                                Before beginning each recursive call, look up array. The base cases would stay the same,
