@@ -60,6 +60,7 @@ public class GlassFalling {
 	        }
 	    }
       }
+      return trials[floors][sheets]; // minimum number of trials
   }
 
 
