@@ -6,15 +6,14 @@ public class GlassFalling {
 
   // Do not change the parameters!
   public int glassFallingRecur(int floors, int sheets) {
-    // base cases
-    if(floors == 0) return 0;
+          // base cases
+          if(floors == 0) return 0;
 	  if(floors == 1) return 1;
 	  if(sheets == 1) return floors; 
  
           // go through every floor 
 	        int minimum = floors;
-	        for(int trials = 1; trials <= floors; trials++)
-          {
+	        for(int trials = 1; trials <= floors; trials++) {
 	        	                 // max of glass breaking vs not breaking
 	         int outcome = 1 + Math.max(glassFallingRecur(trials-1, sheets-1),
 	        		               glassFallingRecur(floors-trials, sheets));
@@ -35,37 +34,32 @@ public class GlassFalling {
   public int glassFallingBottomUp(int floors, int sheets) {
     int[][] trials = new int[floors+1][sheets+1];
     // base cases
-    for (int sheet = 0; sheet <= sheets; sheet++)
-    {
+    for (int sheet = 0; sheet <= sheets; sheet++) {
       trials[0][sheet] = 0; // no floors = no trials
     }
-    for (int sheet = 0; sheet <= sheets; sheet++)
-    {
+    for (int sheet = 0; sheet <= sheets; sheet++) {
       trials[1][sheet] = 1; // 1 floor = 1 trial
     }
-    for (int floor = 0; floor <= floors; floor++)
-    {
+    for (int floor = 0; floor <= floors; floor++) {
       trials[floors][0] = 0; // no sheets = no trials
     }
-    for (int floor = 0; floor <= floors; floor++)
-    {
+    for (int floor = 0; floor <= floors; floor++) {
       trials[floor][1] = floor; 
     }
-     for (int sheet = 2; sheet <= sheets; sheet++) 
-     {
-	      for (int floor = 2; floor <= floors; floor++) 
-        {
-    trials[floor][sheet] = floors;
-    // x = trials
-	        for (int x = 1; x <= floor; x++) 
-          {
+     for (int sheet = 2; sheet <= sheets; sheet++) {
+	     
+	      for (int floor = 2; floor <= floors; floor++) {
+		      
+                  trials[floor][sheet] = floors;
+                   // x = trials
+	        for (int x = 1; x <= floor; x++) {
                               // max of glass breaking vs not breaking
 	          int outcome = 1 + Math.max(trials[x-1][sheet-1], 
 	        		                  trials[floor-x][sheet]); 
 	          trials[floor][sheet] = Math.min(outcome, trials[floor][sheet]);
 	        }
-	      }
-	   }
+	    }
+      }
   }
 
 
