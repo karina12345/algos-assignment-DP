@@ -1,8 +1,9 @@
 1. Falling Glass
 
 (a) Optimal substructure/recurrence that would lead to a recursive solution:
-    
-    There are two possibilities at each trial: Falling glass can either break or not break
+    Optimal solution is based on optimal solutions of subproblems. 
+    In this problem: our optimal solution is the minimum number of trials necessary.
+    There are two possibilities at each trial: Falling glass can either break or not break, we take the max of each
     If falling glass breaks: after falling from the ith floor, broken glass gets swept away,
                              then we check i - 1 floors using m - 1 sheets
                              (since we know if we go higher than ith floor, glass will break)
