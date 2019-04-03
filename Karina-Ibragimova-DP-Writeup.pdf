@@ -28,12 +28,12 @@
           / |      | \
       (0,1)(1,2) (1,1)(0,2)
                 
-(d) 8 distinct subproblems that you end up with given 4 floors and 2 sheets
-(e) n x m distinct subproblems that you end up with given n floors and m sheets = nm
+(d) Distinct subproblems that you end up with given 4 floors and 2 sheets = 8
+(e) Distinct subproblems that you end up with given n floors and m sheets = n*m
 (f) Memoize GlassFallingRecur: Create an array for floors, sheets, where you can save results after each recursive call.
-                               Before beginning each recursive call, look up array. The base cases would stay the same,
-                               and you would check if [floors][sheets] is in memory, return it, otherwise, make the recursive call,
-                               save it in memory, return minimum trials of [floors][sheets].
+                               Before beginning each recursive call, check the array. The base cases would stay the same,
+                               and you would check if [floors][sheets] is in memory, return it. Otherwise, 
+                               make the recursive call, save it in memory, return.
                               
 2. Rod Cutting
 
